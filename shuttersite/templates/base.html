@@ -30,9 +30,13 @@
                     <li class="nav-item">
                         <a class="nav-link" style="color: antiquewhite; font-size: larger; margin-left: 30px;" href="/about.html">About Us</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: antiquewhite; font-size: larger; margin-left: 30px;" href="/about.html">{{ request.user }}</a>
+                    </li>
+                    
                 </ul>
-                <a class="navbar-text" href="login.html">
-                    <button type="button" class="btn btn-outline-success btn-lg"  >Log out</button>
+                <a class="navbar-text" href="logout">
+                    <button type="button" class="btn btn-outline-success btn-lg" >Log out</button>
                 </a>
             </div>
         </div>

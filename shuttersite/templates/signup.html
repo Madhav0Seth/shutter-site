@@ -17,7 +17,6 @@
             margin: 0;
             box-sizing: border-box;
         }
-
         a {
             text-decoration: none;
         }
@@ -161,9 +160,9 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="POST" action="/login">
+    <form method="POST" action="/signup">
     {% csrf_token %}
-        <h3>Login Here</h3>
+        <h3>Signup Here</h3>
 
         <label for="username" >Username</label>
         <input type="text" placeholder="Email or Phone" name="username" id="username" required>
@@ -177,10 +176,9 @@
         </div>
         {% endif %}
 
-        <button type="submit">Log In</button>
-        <a href='signup' class="social">
-
-            <div class="go">Sign Up</div>
+        <button type="submit">Sign Up</button>
+        <a href="login" class="social">
+            <div class="go">Log in instead</div>
 
         </a>
 
