@@ -152,7 +152,8 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form method="POST" action="/login">
+    {% csrf_token %}
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
@@ -161,7 +162,7 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password">
 
-        <button>Log In</button>
+        <button type="submit">Log In</button>
         <div class="social">
             <div class="go"><i class="fab fa-google"></i> Google</div>
 
