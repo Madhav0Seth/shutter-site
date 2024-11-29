@@ -37,3 +37,14 @@ def signup_view(request):
         user.save()
         return redirect(index_view)
     return render(request, "signup.html")
+
+def about_view(request):
+    if request.user.is_anonymous:
+        return redirect(login_view)
+    return render(request ,'about.html')
+
+
+def myprofile_view(request):
+    if request.user.is_anonymous:
+        return redirect(login_view)
+    return render(request ,'myprofile.html')
