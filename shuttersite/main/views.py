@@ -20,7 +20,6 @@ def index_view(request):
     else:
         form = PictureForm()
         pictures = Picture.objects.all()
-        print(pictures)
         return render(request ,'index.html',{'pictures': pictures, 'form':form,})
 
 def login_view(request):
