@@ -41,20 +41,22 @@
       <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body" style="background-color: antiquewhite;">
           <div class="container text-center" style="margin-top: 20px;">
-            <form>
+            <form action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <!--
               <div class="row">
                 <div class="col">
 
                   <div class="mb-3">
 
-                    <input class="form-control" type="file" id="formFile">
+                    <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg, image/webp" name="image" id="formFile">
                   </div>
                 </div>
                 <div class="col">
-
-                  <input class="form-control" type="text" placeholder="Enter Caption"
+                  <input class="form-control" type="text" name="caption" placeholder="Enter Caption"
                     aria-label="default input example">
-                </div>
+                </div> -->
                 <div class="col">
 
                   <button type="submit" class="btn btn-danger">Submit</button>
@@ -75,15 +77,19 @@
 
 
 <!--cards-->
+{% if pictures %}
+{% for picture in pictures %}
 <div class="container">
   <div class="card mb-3 mx-auto" style="max-width: 700px; margin-top: 20px;">
-    <img src={% static 'img3.jpeg' %} class="card-img-top" alt="...">
+    <img src='{{ picture.image.url }}' class="card-img-top" alt="...">
     <div class="card-body" style="background-color: #02021b;">
-      <h5 class="card-title" style="color: antiquewhite;">User Name</h5>
-      <p class="card-text" style="color: antiquewhite;">enter the caption caption caption caption</p>
+      <h5 class="card-title" style="color: antiquewhite;">{{ picture.user.username }}</h5>
+      <p class="card-text" style="color: antiquewhite;">{{ picture.caption }}</p>
       
 
     </div>
   </div>
 </div>
+{% endfor %}
+{% endif %}
 {% endblock %}
