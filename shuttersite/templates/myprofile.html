@@ -1,3 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}<h1>MYPROFILE</h1>{% endblock content %}
+{% block content %}
+
+<!--cards-->
+{% if pictures %}
+{% for picture in pictures %}
+<div class="container">
+  <div class="card mb-3 mx-auto" style="max-width: 700px; margin-top: 20px;">
+    <img src='{{ picture.image.url }}' class="card-img-top" alt="...">
+    <div class="card-body" style="background-color: #02021b;">
+      <h5 class="card-title" style="color: antiquewhite;">{{ picture.user.username }}</h5>
+      <p class="card-text" style="color: antiquewhite;">{{ picture.caption }}</p>
+      
+
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

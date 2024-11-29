@@ -59,7 +59,10 @@ def about_view(request):
 def myprofile_view(request):
     if request.user.is_anonymous:
         return redirect(login_view)
-    return render(request ,'myprofile.html')
+    form = PictureForm()
+    pictures = Picture.objects.filter(user=request.user)
+    return render(request ,'myprofile.html',{'pictures': pictures, 'form':form,})
+    
 
 
         
