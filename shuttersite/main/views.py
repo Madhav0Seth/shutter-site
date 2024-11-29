@@ -3,12 +3,25 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from .models import Picture, PictureForm
 
 # Create your views here.
 def index_view(request):
     if request.user.is_anonymous:
         return redirect(login_view)
-    return render(request ,'index.html')
+    elif request.method == "POST":
+        form = PictureForm(request.POST,request.FILES)
+        if form.is_valid():
+            picture = form.save(commit = False)
+            picture.user = request.user
+            picture.save()
+            return redirect(index_view)
+    else:
+        form = PictureForm()
+        pictures = Picture.objects.all()
+        print(pictures)
+        return render(request ,'index.html',{'pictures': pictures, 'form':form,})
 
 def login_view(request):
     if request.method == "POST":
@@ -48,3 +61,6 @@ def myprofile_view(request):
     if request.user.is_anonymous:
         return redirect(login_view)
     return render(request ,'myprofile.html')
+
+
+        
