@@ -6,10 +6,12 @@
 <div class="container">
   <hr class="featurette-divider">
   <div class="row featurette">
-      <div class="col-md-7" style="align-content: center;">
-          <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span
-                  class="text-body-secondary">It’ll blow your mind.</span></h2>
-          <p class="lead">No. of images uploaded : {{number}}</p>
+      <div class="col-md-7" style="align-content: center; text-align: center;">
+          <h2 class="featurette-heading " style="font-weight: 400; font-size: 40px;">Hello!  <strong
+                  class="text-body">{{request.user}}</strong></h2>
+          <p style="color: #02021b; font-size: 26px; font-weight: 600;">Thank you for being a valued part of the ShutterSite community—your creativity inspires us all!</p>        
+          <p class="lead" style="font-size: 25px;">No. of images uploaded : {{number}}</p>
+
       </div>
       <div class="col-md-5">
           <img src={% static "darklogo.png" %} class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
