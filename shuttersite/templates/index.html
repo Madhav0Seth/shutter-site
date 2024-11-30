@@ -4,16 +4,16 @@
 {% block content %}
 <!-- Carousel -->
 <div class="container">
-  <div id="carouselExampleFade" class="carousel slide carousel-fade" style="margin-top: 10px; margin-bottom: 40px;">
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" style="margin-top: 10px; margin-bottom: 40px; ">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src={% static 'img1.jpeg' %} class="d-block w-100" alt="..." />
+      <div class="carousel-item active" >
+        <img src={% static 'img1.jpeg' %} class="d-block w-100" alt="..." style="border-radius: 20px;"  />
       </div>
       <div class="carousel-item">
-        <img src={% static 'img2.jpeg' %} class="d-block w-100" alt="..." />
+        <img src={% static 'img2.jpeg' %} class="d-block w-100" alt="..." style="border-radius: 20px;"/>
       </div>
       <div class="carousel-item">
-        <img src={% static 'img3.jpeg' %} class="d-block w-100" alt="..." />
+        <img src={% static 'img3.jpeg' %} class="d-block w-100" alt="..." style="border-radius: 20px;"/>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -29,12 +29,12 @@
 <!--create post button-->
 
 <div class="container ">
-  <div class="accordion accordion-flush " id="accordionExample">
-    <div class="accordion-item ">
+  <div class="accordion accordion-flush " id="accordionExample" >
+    <div class="accordion-item " style="background-color: antiquewhite;" >
       <h2 class="accordion-header ">
         <button class="accordion-button d-block text-center" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-          style="color: antiquewhite; font-weight: 800; background-color: #02021b; font-size: 28px;">
+          style="color: antiquewhite; font-weight: 800; background-color: #02021b; font-size: 28px; border-radius: 20px;">
           CREATE POST
         </button>
       </h2>
@@ -59,7 +59,7 @@
                 </div> -->
                 <div class="col">
 
-                  <button type="submit" class="btn btn-danger">Submit</button>
+                  <button type="submit" class="btn btn-danger" style=" border-radius: 10px;">Submit</button>
                 </div>
               </div>
             </form>
@@ -80,10 +80,10 @@
 {% if pictures %}
 {% for picture in pictures %}
 <div class="container">
-  <div class="card mb-3 mx-auto" style="max-width: 700px; margin-top: 20px;">
+  <div class="card mb-3 mx-auto" style="max-width: 700px; margin-top: 20px; background-color: antiquewhite; border-radius: 20px; ">
     <img src='{{ picture.image.url }}' class="card-img-top" alt="...">
-    <div class="card-body" style="background-color: #02021b;">
-      <h5 class="card-title" style="color: antiquewhite;">{{ picture.user.username }}</h5>
+    <div class="card-body" style="background-color: #02021b; background-color: #02021b;">
+      <h5 class="card-title" style="color: antiquewhite; border-radius: 20px;">{{ picture.user.username }}</h5>
       <p class="card-text" style="color: antiquewhite;">{{ picture.caption }}</p>
       <small class="card-text" style="color: antiquewhite;">{{ picture.uploaded_on }}</small>
       
