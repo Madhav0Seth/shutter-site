@@ -6,10 +6,28 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Picture, PictureForm
 
+import random
+#from .models import Image
+
+def random_image_view(request):
+    # Get all image IDs from the database
+    image_ids = PictureForm.objects.values_list('id', flat=True)
+
+    # Select a random image
+    random_image = None
+    if image_ids:
+        random_id = random.choice(image_ids)
+        random_image = PictureForm.objects.get(id=random_id)
+    context = {
+        'random_image': random_image
+    }
+    return render(request, 'random_image.html', context)
+
 # Create your views here.
 def index_view(request):
     if request.user.is_anonymous:
         return redirect(login_view)
+        
     elif request.method == "POST":
         form = PictureForm(request.POST,request.FILES)
         if form.is_valid():
@@ -18,9 +36,16 @@ def index_view(request):
             picture.save()
             return redirect(index_view)
     else:
+        #RANDOM IMAGE LOGIC
+        image_ids = Picture.objects.values_list('id', flat=True).distinct()
+        random_image = None
+        if image_ids:
+            random_id = random.choice(image_ids)
+            random_image = Picture.objects.get(id=random_id)
+
         form = PictureForm()
         pictures = Picture.objects.all()
-        return render(request ,'index.html',{'pictures': pictures, 'form':form,})
+        return render(request ,'index.html',{'pictures': pictures, 'form':form,'random_image': random_image})
 
 def login_view(request):
     if request.method == "POST":
@@ -61,7 +86,9 @@ def myprofile_view(request):
         return redirect(login_view)
     form = PictureForm()
     pictures = Picture.objects.filter(user=request.user)
-    return render(request ,'myprofile.html',{'pictures': pictures, 'form':form,})
+    List_objests=list(Picture.objects.filter(user=request.user))
+    number=len(List_objests)
+    return render(request ,'myprofile.html',{'pictures': pictures, 'form':form, 'number':number})
     
 
 
