@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&l=bwdbzu=fgf+mt**w83)^h^z8sldq^6cfyv6zs$qgbk(+kiy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shutter-site.onrender.com']
+ALLOWED_HOSTS = ['shutter-site.onrender.com','127.0.0.1']
 
 
 # Application definition
@@ -132,3 +132,4 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+
